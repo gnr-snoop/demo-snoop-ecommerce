@@ -8,11 +8,17 @@
    --body-font-weight: 400;
    --body-line-height: 1.5;
    --primary: #d9261c;
-   --secondary: #139792;
+   --primary-light: #ffccce;
+   --primary-lighter: #ffeaed;
+   --secondary: #42b5ae;
+   --secondary-light: #b0dfdc;
+   --secondary-lighter: #dff2f1;
+   --secondary-dark: #01a59b;
    --primary-rgb: 217, 38, 28;
-   --secondary-rgb: 19, 151, 146;
+   --secondary-rgb: 66, 181, 174;
    --gray-light: #f0f0f0; 
    --gray-light-rgb: 240, 240, 240; 
+   --yellow: #fefbf7;
    --white: #fff;
    --border-radius-xxl: 1.5rem;
    --message-color: #2e2e2e;
@@ -59,41 +65,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stChatMessage:nth-child(odd) {
-   background-color: rgba(var(--secondary-rgb), .1);
+   
+   background-color: var(--secondary-lighter);
+   border: 1px solid var(--secondary-light);
    border-radius: var(--border-radius-xxl) 0 var(--border-radius-xxl) var(--border-radius-xxl);
    margin-left: auto;
    margin-right: 14.1px;
+   padding-right: 3.5rem;
    box-shadow: 0 .25rem .25rem  -.2rem rgba(var(--secondary-rgb), .4);
 }
 
 .stChatMessage:nth-child(even) {
-   background-color: rgba(var(--primary-rgb), .1);
+   background-color: var(--primary-lighter);
+   border: 1px solid var(--primary-light);
    border-radius: 0 var(--border-radius-xxl) var(--border-radius-xxl) var(--border-radius-xxl);
    margin-left: 14.1px;
+   padding-left: 3.5rem;
    box-shadow: 0 .25rem .25rem  -.2rem rgba(var(--primary-rgb), .4);
-}
-
-.stChatMessage:nth-child(odd)::before,
-.stChatMessage:nth-child(even)::before { 
-   content:'';
-   position: absolute;
-   top: 3px;
-   margin-top: -4.7px;
-   border-left: 10px solid transparent;
-   border-right: 10px solid transparent;
-}
-.stChatMessage:nth-child(odd)::before {
-   right: -10px;
-   margin-right: -3.7px;
-   border-bottom: 10px solid rgba(var(--secondary-rgb), .1);
-   transform: rotate(-45deg);
-}
-
-.stChatMessage:nth-child(even)::before {
-   left: -10px;
-   margin-left: -3.7px;
-   border-bottom: 10px solid rgba(var(--primary-rgb), .1);
-   transform: rotate(45deg);
 }
 
 .stMarkdown {
@@ -158,23 +146,35 @@ h1, h2, h3, h4, h5, h6 {
 [data-testid="chatAvatarIcon-user"] {
    background-position: center;
    background-repeat: no-repeat;
-   background-size: 32px auto;
-   border-radius: .375rem;
-   width: 3rem;
-   height: 3rem;
+   background-size: 24px auto;
+   width: 2.5rem;
+   height: 2.5rem;
+   position: absolute;
+   top: -1px;
 }
 
 [data-testid="chatAvatarIcon-assistant"] {
-   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(255,255,255)" class="bi bi-emoji-wink" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m1.757-.437a.5.5 0 0 1 .68.194.93.93 0 0 0 .813.493c.339 0 .645-.19.813-.493a.5.5 0 1 1 .874.486A1.93 1.93 0 0 1 10.25 7.75c-.73 0-1.356-.412-1.687-1.007a.5.5 0 0 1 .194-.68"/></svg>');
-   background-color: var(--primary);
+   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(217,38,28)" class="bi bi-emoji-wink" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m1.757-.437a.5.5 0 0 1 .68.194.93.93 0 0 0 .813.493c.339 0 .645-.19.813-.493a.5.5 0 1 1 .874.486A1.93 1.93 0 0 1 10.25 7.75c-.73 0-1.356-.412-1.687-1.007a.5.5 0 0 1 .194-.68"/></svg>');
+   background-color: var(--primary-light);
+   border: 1px solid var(--primary);
+   left: -1px;
+   border-radius: 0 var(--border-radius-xxl) var(--border-radius-xxl) var(--border-radius-xxl);
 }
 
 [data-testid="chatAvatarIcon-user"] {
-   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(255,255,255)" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></svg>');
-   background-color: var(--secondary);
+   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(1,165,155)" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></svg>');
+   background-color: var(--secondary-light);
+   border: 1px solid var(--secondary);
+   right: -1px;
+   border-radius: var(--border-radius-xxl) 0 var(--border-radius-xxl) var(--border-radius-xxl);
 }
 
 [data-testid="chatAvatarIcon-assistant"] svg,
 [data-testid="chatAvatarIcon-user"] svg {
    display: none;
 }
+
+
+.element-container + .element-container {
+    display: none;
+ }
