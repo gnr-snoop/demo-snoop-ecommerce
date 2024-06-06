@@ -55,6 +55,11 @@ def run_app():
             message_placeholder = st.empty()
             full_response = ""
 
+            event = event_mapping.get(int(st.session_state.turn))
+            if event:
+                print(event)
+                value = custom_component(action=event[0], id_product=event[1])
+                
             #assistant_response = generate_response(prompt)
             assistant_response = get_response(st.session_state.turn)
             for letra in assistant_response:
@@ -63,10 +68,7 @@ def run_app():
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
 
-            event = event_mapping.get(int(st.session_state.turn))
-            if event:
-                print(event)
-                value = custom_component(action=event[0], id_product=event[1])
+
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})
         st.session_state.turn = (st.session_state.turn + 1) % conversation_length
