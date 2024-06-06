@@ -2,4 +2,4 @@
 source venv/bin/activate
 
 
-python3 -m streamlit run streamlit-app/streamlit_app.py
+python -m streamlit run streamlit-app/streamlit_app.py

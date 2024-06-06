@@ -1,5 +1,4 @@
 import time
-import random
 import requests
 import streamlit as st
 import streamlit.components.v1 as components
@@ -7,8 +6,8 @@ from conversation import conversation, conversation_hector, event_mapping
 
 
 LLM_ENDPOINT = "http://127.0.0.1:8000/base"
-conversation_length = len(conversation_hector)
 conversation_steps = conversation_hector
+conversation_length = len(conversation_steps)
 
 custom_component = components.declare_component(
     "mycomponent",
@@ -57,8 +56,7 @@ def run_app():
 
             event = event_mapping.get(int(st.session_state.turn))
             if event:
-                print(event)
-                value = custom_component(action=event[0], id_product=event[1])
+                custom_component(action=event[0], id_product=event[1])
                 
             #assistant_response = generate_response(prompt)
             assistant_response = get_response(st.session_state.turn)
@@ -67,7 +65,6 @@ def run_app():
                 time.sleep(0.02)
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
-
 
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})

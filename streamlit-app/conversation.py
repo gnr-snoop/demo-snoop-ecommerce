@@ -7,7 +7,7 @@ event_mapping = {
     SHOW_LIST: ("plp", -1),
     SHOW_SAMSUNG: ("pdp", 1),
     SHOW_IPHONE: ("pdp", 2),
-    SHOW_IPHONE_AGAIN: ("pdp", 7),
+    SHOW_IPHONE_AGAIN: ("pdp", 2),
 }
 
 
