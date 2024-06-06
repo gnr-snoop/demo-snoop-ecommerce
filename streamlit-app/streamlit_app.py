@@ -65,6 +65,7 @@ def run_app():
 
             event = event_mapping.get(int(st.session_state.turn))
             if event:
+                print(event)
                 value = custom_component(action=event[0], id_product=event[1])
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})
